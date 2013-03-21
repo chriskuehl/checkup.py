@@ -1,7 +1,7 @@
 [
 	{
-		title: "Google",
-		urls: [
+		"title": "Google",
+		"urls": [
 			"http://www.google.com/",
 			"http://mail.google.com/",
 			"http://news.google.com/"
@@ -9,15 +9,15 @@
 	},
 	
 	{
-		title: "GitHub",
-		urls: [
+		"title": "GitHub",
+		"urls": [
 			"https://github.com/"
 		]
 	},
 	
 	{
-		title: "Stack Overflow",
-		urls: [
+		"title": "Stack Overflow",
+		"urls": [
 			"http://stackoverflow.com/"
 		]
 	}
