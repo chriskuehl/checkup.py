@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import json
 import urllib.request
+from urllib.error import *
+from socket import timeout
 
 # methods
 def check_all_sites():
@@ -25,7 +27,15 @@ def check_site(site):
 			print("down!")
 
 def url_up(url):
-	urllib.request.urlretrieve(url)
-
+	try: 
+		urllib.request.urlretrieve(url)
+	except (HTTPError) as error: # soft error
+		return False
+	except (URLError) as error: # hard error
+		return False
+	except (timeout, IOError):
+		return False
+	else:
+		return True
 # main program
 check_all_sites()
