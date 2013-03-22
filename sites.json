@@ -20,5 +20,13 @@
 		"urls": [
 			"http://stackoverflow.com/"
 		]
+	},
+	
+	{
+		"title": "Bad Website",
+		"urls": [
+			"http://fake.website/",
+			"http://8.8.8.8/"
+		]
 	}
 ]
