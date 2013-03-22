@@ -28,7 +28,7 @@ def check_site(site):
 
 def url_up(url):
 	try: 
-		urllib.request.urlretrieve(url)
+		urllib.request.urlopen(url, None, 10)
 	except (HTTPError) as error: # soft error
 		return False
 	except (URLError) as error: # hard error
