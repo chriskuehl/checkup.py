@@ -4,7 +4,7 @@
 	
 	"server": {
 		"type": "smtp",
-		"server": "localhost",
+		"host": "localhost",
 		"port": 25
 	}
 }
