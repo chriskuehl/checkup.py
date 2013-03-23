@@ -3,6 +3,7 @@ import json
 import urllib.request
 from urllib.error import *
 from socket import timeout
+from time import gmtime, strftime
 
 # methods
 def check_all_sites():
@@ -23,6 +24,8 @@ def check_all_sites():
 		
 		for site in failed_sites:
 			print("\t{} ({}/{} URLs failed)".format(site['site']['title'], len(site['failed_urls']), len(site['site']['urls'])))
+		
+		alert_sites_down(failed_sites)
 	else:
 		print('All sites were up.')
 
@@ -64,8 +67,17 @@ def url_up(url):
 	else:
 		return True
 
-def alert_site_down(urls, site):
-	print("")
+def alert_sites_down(sites):
+	# prepare an email message
+	sites_title_list = ""
+	
+	for site in sites:
+		sites_title_list += site['site']['title'] + ", "
+	
+	sites_title_list = sites_title_list[:-2] # chop off the trailing comma and space
+	
+	subject = "SITES DOWN ({}) {}: {}".format(len(sites), strftime("%I:%M %p", gmtime()), sites_title_list)
+	
 	
 # main program
 check_all_sites()
