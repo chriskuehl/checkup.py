@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import json
 import urllib.request
+import smtplib
 from urllib.error import *
 from socket import timeout
 from time import gmtime, strftime
+from email.mime.text import MIMEText
 
 # methods
 def check_all_sites():
@@ -90,6 +92,15 @@ def alert_sites_down(sites):
 
 def email(subject, body):
 	options = get_email_options()
+	
+	msg = MIMEText(body)
+	msg['Subject'] = subject
+	msg['From'] = options['from']
+	msg['To'] = options['to']
+	
+	server = smtplib.SMTP(options['server']['host'], options['server']['port'])
+	server.sendmail(options['from'], [options['to']], msg.as_string())
+	server.quit()
 
 def get_email_options():
 	file = open('email.json')
