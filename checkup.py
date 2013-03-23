@@ -83,11 +83,17 @@ def alert_sites_down(sites):
 		
 		body += "\n"
 			
-	print(body)
 	sites_title_list = sites_title_list[:-2] # chop off the trailing comma and space
-	
+
 	subject = "SITES DOWN ({}) {}: {}".format(len(sites), strftime("%I:%M %p", gmtime()), sites_title_list)
-	
-	
+	email(subject, body)	
+
+def email(subject, body):
+	options = get_email_options()
+
+def get_email_options():
+	file = open('email.json')
+	return json.load(file)
+
 # main program
 check_all_sites()
