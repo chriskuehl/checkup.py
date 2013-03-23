@@ -1,0 +1,10 @@
+{
+	"from": "monitor@localhost",
+	"to": "chris@localhost",
+	
+	"server": {
+		"type": "smtp",
+		"server": "localhost",
+		"port": 25
+	}
+}
