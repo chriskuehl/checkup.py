@@ -15,13 +15,13 @@ def check_all_sites():
 	for site in all_sites:
 		status = check_site(site)
 		
-		if (not(status['up'])):
+		if not(status['up']):
 			failed_sites.append({
 				'site': site,
 				'failed_urls': status['failed_urls']
 			})
 	
-	if (len(failed_sites) > 0):
+	if len(failed_sites) > 0:
 		print('Some sites are down:')
 		
 		for site in failed_sites:
@@ -43,13 +43,13 @@ def check_site(site):
 	for url in site['urls']:
 		print("\tChecking: {}...".format(url), end = '')
 		
-		if (url_up(url)):
+		if url_up(url):
 			print("up!")
 		else:
 			print("down!")
 			failed_urls.append(url)
 	
-	if (len(failed_urls) > 0):
+	if len(failed_urls) > 0:
 		return {
 			'up': False,
 			'failed_urls': failed_urls
